@@ -1,0 +1,44 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-3 text-center">
+            <img [src]="usuario.img | imagen" alt="... " class="img-fluid rounded-circle" width="150">
+
+        </div>
+        <div class="col-md-9 ">
+            <div class="row ">
+                <div class="col-md-4 ">
+                    <h2>{{ usuario.nombre }}</h2>
+                </div>
+                <div class="col-md-8 ">
+                    <a *ngIf="usuario._id === _loginService.usuario._id" [routerLink]="['/perfil']" type="button " class="btn btn-secondary seguir ">Editar</a>
+                    <a *ngIf="usuario._id !== _loginService.usuario._id" routerLink="/perfil " type="button " class="btn btn-primary seguir ">Seguir</a>
+                </div>
+            </div>
+            <div class="row spanes ">
+                <div class="col-md-4 ">
+                    <p><b>240</b> publicaciones</p>
+                </div>
+                <div class="col-md-4 ">
+                    <p><b>16,7mm</b> seguidores</p>
+                </div>
+                <div class="col-md-4 ">
+                    <p><b>14</b> seguidos</p>
+                </div>
+            </div>
+            <div class="row spanes ">
+                <div class="col-md-12 ">
+                    <p>{{ usuario.bio }}</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="top container-fluid">
+    <div class="card-columns">
+        <div class="card">
+            <img class="card-img" src="assets/imgs/piuragram.jpg" alt="Card image">
+        </div>
+
+    </div>
+</div>

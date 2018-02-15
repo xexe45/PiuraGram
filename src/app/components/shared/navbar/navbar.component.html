@@ -1,0 +1,29 @@
+<nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light nv">
+    <a class="navbar-brand" href="#">
+        <img src="assets/imgs/icono.png" width="50" height="50" class="d-inline-block align-top" alt=""> <span class="h2">Piuragram</span>
+    </a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" #busqueda type="search" placeholder="Buscar" aria-label="Search">
+            <button class="btn btn-outline-primary my-2 my-sm-0" type="button" (click)="usuarios(busqueda.value)">Buscar</button>
+        </form>
+
+        <ul class="nav justify-content-end">
+            <li class="nav-item salir">
+                <a *ngIf="!_loginService.token" class="nav-link active" href="#">Entrar</a>
+                <a *ngIf="_loginService.token" class="nav-link active" (click)="salir()">Salir</a>
+            </li>
+
+        </ul>
+
+
+    </div>
+</nav>

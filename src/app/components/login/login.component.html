@@ -1,0 +1,102 @@
+<div class="container portada">
+    <div class="row">
+        <div class="col-md-6 d-none d-sm-block">
+            <img src="assets/imgs/pantalla.png" class="img-fluid" alt="">
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body text-center">
+                    <div class="piuragram">
+                        <h1>Piuragram</h1>
+                    </div>
+
+                    <div class="container texto" *ngIf="registrar">
+                        <h5>Regístrate para ver fotos de tus amigos</h5>
+                        <hr>
+                        <form ngNativeValidate [formGroup]="forma" (ngSubmit)="registrarUsuario()">
+                            <div class="form-group">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon1"><i class="fas fa-at"></i></span>
+                                    </div>
+                                    <input formControlName="email" type="email" class="form-control" name="email" placeholder="Correo electrónico" aria-label="Correo" required aria-describedby="basic-addon1">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon2"><i class="fas fa-user"></i></span>
+                                    </div>
+                                    <input formControlName="nombre" type="text" class="form-control" name="nombre" placeholder="Nombre completo" aria-label="Nombre" required aria-describedby="basic-addon2">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon3"><i class="fab fa-napster"></i></span>
+                                    </div>
+                                    <input formControlName="user" type="text" class="form-control" name="user" placeholder="Nombre de usuario" aria-label="User" required aria-describedby="basic-addon3">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon4"><i class="fas fa-key"></i></span>
+                                    </div>
+                                    <input type="password" formControlName="password" class="form-control" name="password" required placeholder="Mínimo 6 caracteres" aria-label="Password" aria-describedby="basic-addon4">
+
+                                </div>
+                                <div *ngIf="forma.get('password').errors?.minlength" class="form-control-feedback">
+                                    Por lo menos 6 caracteres
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block">Registrarte</button>
+                            <br>
+                            <p>Al registrarte, aceptas nuestras <b>Condiciones</b> y la <b>Política de privacidad</b></p>
+                        </form>
+                    </div>
+
+                    <div class="container texto" *ngIf="!registrar">
+
+                        <form ngNativeValidate #f="ngForm" (ngSubmit)="ingresar(f)">
+                            <div class="form-group">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon1"><i class="fas fa-at"></i></span>
+                                    </div>
+                                    <input type="email" required [ngModel]="email" class="form-control" name="email" placeholder="Correo electrónico" aria-label="Correo" aria-describedby="basic-addon1">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon4"><i class="fas fa-key"></i></span>
+                                    </div>
+                                    <input type="password" [ngModel]="password" required class="form-control" name="password" placeholder="Contraseña" aria-label="Password" aria-describedby="basic-addon4">
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block">Entrar</button>
+                            <br>
+                            <a href="#">¿Has olvidado la constraseña?</a>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+            <br>
+
+
+
+            <div class="card">
+                <div class="card-body text-center">
+                    <p class="ir" *ngIf="registrar">¿Tienes una cuenta? <a (click)="registrar = !registrar">Entrar</a></p>
+                    <p class="ir" *ngIf="!registrar">¿No tienes una cuenta? <a (click)="registrar = !registrar">Regístrate</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,17 @@
+.portada {
+    margin-top: 2%;
+}
+
+.piuragram {
+    font-family: 'Pacifico', cursive;
+    padding: 10px;
+}
+
+.texto {
+    color: #BDBDBD;
+}
+
+.ir a {
+    cursor: pointer;
+    color: steelblue;
+}

@@ -1,0 +1,30 @@
+<app-navbar></app-navbar>
+<div class="container-fluid tp">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="list-group">
+                <a href="#" class="list-group-item list-group-item-action">Tu cuenta</a>
+                <a routerLinkActive="active" [routerLink]="['editar-perfil']" class="list-group-item list-group-item-action">Editar Perfil</a>
+                <a routerLinkActive="active" [routerLink]="['editar-password']" class="list-group-item list-group-item-action">Cambiar Contraseña</a>
+                <a href="#" class="list-group-item list-group-item-action">Salir</a>
+            </div>
+            <br>
+            <div class="card">
+                <div class="card-body text-center">
+                    <h5>Imagen de Perfil</h5>
+                    <img *ngIf="!imagenTemp" src="assets/imgs/user-512.png" alt="" class="img-fluid" width="150">
+                    <img *ngIf="imagenTemp" [src]="imagenTemp" alt="" class="img-fluid" width="150">
+                    <div class="form-group">
+                        <input type="file" class="form-control" name="file" (change)="verImagen($event.target.files[0])">
+                    </div>
+                    <div class="form-group">
+                        <button *ngIf="imagen" type="button" class="btn btn-success" (click)="subirArchivo()">Cambiar Imagen</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>

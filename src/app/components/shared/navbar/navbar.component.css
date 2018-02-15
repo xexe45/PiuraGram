@@ -1,0 +1,12 @@
+.h2 {
+    font-family: 'Pacifico', cursive;
+}
+
+.nv {
+    background: #fff !important;
+}
+
+.salir a {
+    cursor: pointer;
+    color: cadetblue;
+}
