@@ -6,9 +6,13 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class ImagenPipe implements PipeTransform {
   transform(imagen: string, tipo: string = 'perfil'): any {
-    let url = '';
+    let url = BASE_URL + '/img/';
     if ( tipo === 'perfil' ) {
-      url = BASE_URL + '/imgprof/' + imagen;
+      url += imagen;
+    }
+
+    if ( tipo === 'posts' ) {
+      url += 'post/' + imagen;
     }
     return url;
   }

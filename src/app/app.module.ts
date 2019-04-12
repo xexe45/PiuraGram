@@ -9,6 +9,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ServiceModule } from './services/service.module';
 import { ToastrModule } from 'ngx-toastr';
 
+
 @NgModule({
   declarations: [AppComponent, LoginComponent],
   imports: [

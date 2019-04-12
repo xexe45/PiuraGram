@@ -10,6 +10,7 @@ import { EditarPasswordComponent } from './perfil/editar-password.component';
 import { PerfilComponent } from './perfil/perfil.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
+import { UserComponent } from './user/user.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { UsuariosComponent } from './usuarios/usuarios.component';
     EditarPasswordComponent,
     PerfilComponent,
     UserProfileComponent,
-    UsuariosComponent
+    UsuariosComponent,
+    UserComponent
   ],
   exports: [HomeComponent],
   imports: [SharedModule, PAGES_ROUTES, FormsModule, ReactiveFormsModule, CommonModule]

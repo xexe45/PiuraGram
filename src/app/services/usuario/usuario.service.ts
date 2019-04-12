@@ -13,8 +13,14 @@ export class UsuarioService {
   ) {}
 
   getUser() {
-    let url = BASE_URL + '/usuarios/' + this._loginService.usuario._id;
-    url += '?token=' + this._loginService.token;
+    const url = BASE_URL + '/usuarios/' + this._loginService.usuario._id;
+    return this.http.get(url).map((usuario: any) => {
+      return usuario.usuario;
+    });
+  }
+
+  getUserFree(id: string) {
+    const url = BASE_URL + '/usuarios/' + id;
     return this.http.get(url).map((usuario: any) => {
       return usuario.usuario;
     });
@@ -29,16 +35,18 @@ export class UsuarioService {
         this._loginService.token,
         resp.usuario
       );
-      this._toastr.success('Ahora tus amigos sabrán más sobre ti', 'Edición Correcta!');
+      this._toastr.success(
+        'Ahora tus amigos sabrán más sobre ti',
+        'Edición Correcta!'
+      );
       return resp.usuario;
     });
   }
 
   buscarUsuarios(termino: string) {
     const url = BASE_URL + '/usuarios/buscar/' + termino;
-    return this.http.get(url)
-      .map((resp: any) => {
-        return resp.usuarios;
-      });
+    return this.http.get(url).map((resp: any) => {
+      return resp.usuarios;
+    });
   }
 }

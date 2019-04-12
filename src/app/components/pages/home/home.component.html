@@ -1,1 +1,36 @@
-<app-user-profile [usuario]="_loginService.usuario"></app-user-profile>
+<app-user-profile [usuario]="_loginService.usuario" [posts]="posts"></app-user-profile>
+<button class="botonF1" data-toggle="modal" data-target="#exampleModal">
+  <span>+</span>
+</button>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Nueva Publicación</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+            </div>
+            <form ngNativeValidate #f="ngForm" (ngSubmit)="publicar(f)">
+                <div class="modal-body">
+                    <div class="text-center">
+                        <img *ngIf="!imgTemp" src="assets/imgs/no-image.png" alt="" class="img-fluid" width="200">
+                        <img *ngIf="imgTemp" [src]="imgTemp" alt="" class="img-fluid" width="200">
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <input type="file" required class="form-control" name="file" (change)="verImagen($event.target.files[0])">
+                    </div>
+                    <div class="form-groupp">
+                        <textarea name="post" [ngModel]="post" required class="form-control" placeholder="Descripción"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Publicar!</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

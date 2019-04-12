@@ -1,15 +1,16 @@
-<div class="container">
+<div class="container animated fadeIn">
     <div class="row">
         <div class="col-md-3 text-center">
             <img [src]="usuario.img | imagen" alt="... " class="img-fluid rounded-circle" width="150">
 
         </div>
-        <div class="col-md-9 ">
-            <div class="row ">
+        <div class="col-md-9 centro">
+            <div class="row">
                 <div class="col-md-4 ">
                     <h2>{{ usuario.nombre }}</h2>
+
                 </div>
-                <div class="col-md-8 ">
+                <div class="col-md-8 " *ngIf="_loginService.usuario">
                     <a *ngIf="usuario._id === _loginService.usuario._id" [routerLink]="['/perfil']" type="button " class="btn btn-secondary seguir ">Editar</a>
                     <a *ngIf="usuario._id !== _loginService.usuario._id" routerLink="/perfil " type="button " class="btn btn-primary seguir ">Seguir</a>
                 </div>
@@ -34,11 +35,66 @@
         </div>
     </div>
 </div>
-<div class="top container-fluid">
+<div class="top container-fluid animated fadeIn">
     <div class="card-columns">
-        <div class="card">
-            <img class="card-img" src="assets/imgs/piuragram.jpg" alt="Card image">
+        <div class="card puntero" *ngFor="let post of posts" (click)="imgModal(post)">
+            <img class="card-img" [src]="post.imagen | imagen:'posts'" alt="Card image">
         </div>
+    </div>
+</div>
 
+<!-- Modal -->
+<div *ngIf="post" class="modal fade" id="imgModal" tabindex="-1" role="dialog" aria-labelledby="imgModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-7">
+                        <img class="img" [src]="post.imagen | imagen:'posts'" alt="Card image">
+                    </div>
+                    <div class="col-md-5">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <img [src]="usuario.img | imagen" alt="... " class="img-fluid rounded-circle" width="80">
+
+                            </div>
+                            <div class="col-md-8">
+                                <small><strong>{{ usuario.nombre }}</strong></small>
+
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-12 comentarios">
+                                <p><small><strong>{{ usuario.nombre }}</strong> {{ post.postBody }}</small></p>
+
+                                <p *ngFor="let comentario of comentarios" class="text-justify"><small><a data-dismiss="modal" [routerLink]="['/usuarios',comentario.user_id._id]">{{ comentario.user_id.username }}</a> {{ comentario.commentary }}</small></p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <a *ngIf="!like" (click)="likear()"><i class="far fa-heart puntero cora"></i></a>
+                                <a *ngIf="like" (click)="likear()"><i class="fas fa-heart puntero cora"></i></a>
+                                <p>{{ likes.length }} Me gusta</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <div *ngIf="_loginService.usuario" class="input-group mb-3">
+                    <input [(ngModel)]="comentario" type="text" class="form-control" placeholder="Escribe tu comentario" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" type="button" (click)="comentar()">Comentar</button>
+                    </div>
+                </div>
+
+                <p *ngIf="!_loginService.usuario">Inicia sesión para indicar que te gusta o para comentar</p>
+            </div>
+        </div>
     </div>
 </div>

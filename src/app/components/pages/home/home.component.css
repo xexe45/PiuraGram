@@ -1,8 +1,19 @@
-.seguir {
-    padding-left: 50px;
-    padding-right: 50px;
-}
-
-.spanes {
-    margin-top: 10px;
+.botonF1 {
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
+    background: #F44336;
+    right: 0;
+    bottom: 0;
+    position: fixed;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    border: none;
+    outline: none;
+    color: #FFF;
+    font-size: 36px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    transition: .3s;
+    padding-bottom: 10px;
+    cursor: pointer;
 }

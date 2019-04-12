@@ -1,5 +1,5 @@
 <div class="container portada">
-    <div class="row">
+    <div class="row animated fadeIn">
         <div class="col-md-6 d-none d-sm-block">
             <img src="assets/imgs/pantalla.png" class="img-fluid" alt="">
         </div>
@@ -10,7 +10,7 @@
                         <h1>Piuragram</h1>
                     </div>
 
-                    <div class="container texto" *ngIf="registrar">
+                    <div class="container texto animated fadeIn" *ngIf="registrar">
                         <h5>Regístrate para ver fotos de tus amigos</h5>
                         <hr>
                         <form ngNativeValidate [formGroup]="forma" (ngSubmit)="registrarUsuario()">
@@ -59,7 +59,7 @@
                         </form>
                     </div>
 
-                    <div class="container texto" *ngIf="!registrar">
+                    <div class="container texto animated fadeIn" *ngIf="!registrar">
 
                         <form ngNativeValidate #f="ngForm" (ngSubmit)="ingresar(f)">
                             <div class="form-group">

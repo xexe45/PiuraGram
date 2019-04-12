@@ -5,6 +5,7 @@ import { HomeComponent } from './home/home.component';
 import { LoginGuardGuard } from '../../services/guards/login-guard.guard';
 import { PERFIL_ROUTES } from './perfil/perfil.routes';
 import { UsuariosComponent } from './usuarios/usuarios.component';
+import { UserComponent } from './user/user.component';
 
 const pagesRoutes: Routes = [
   {
@@ -13,6 +14,7 @@ const pagesRoutes: Routes = [
     children: [
       { path: 'home', component: HomeComponent, canActivate: [LoginGuardGuard] },
       { path: 'usuarios/buscar/:usuario', component: UsuariosComponent },
+      { path: 'usuarios/:id', component: UserComponent },
       { path: '', redirectTo: '/home', pathMatch: 'full' }
     ]
   },
